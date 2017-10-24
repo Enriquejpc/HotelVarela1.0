@@ -25,7 +25,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Add extends JFrame {
+public class AddGuest extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtDocs;
@@ -54,7 +54,7 @@ public class Add extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Add() {
+	public AddGuest() {
 		setTitle("Registrar Huesped");
 		setBounds(120, 150, 525, 341);
 		contentPane = new JPanel();

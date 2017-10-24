@@ -8,7 +8,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 import com.hv.utilidades.Utilidades;
-import com.hv.vistas.huespedes.Add;
+import com.hv.vistas.habitaciones.AddRooms;
+import com.hv.vistas.huespedes.AddGuest;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -20,7 +21,9 @@ import com.jgoodies.forms.layout.RowSpec;
 import javax.swing.JLabel;
 
 import java.awt.Font;
+
 import javax.swing.JTextField;
+import javax.swing.JButton;
 
 public class Principal {
 
@@ -82,8 +85,24 @@ public class Principal {
 		JMenu mnHabitaciones = new JMenu("Habitaciones");
 		menuBar.add(mnHabitaciones);
 		
+		JMenuItem mntmVerHabitaciones = new JMenuItem("Ver Habitaciones");
+		mntmVerHabitaciones.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				AddRooms roomFrame = new AddRooms();
+				roomFrame.setVisible(true);				
+			}
+		});
+		mnHabitaciones.add(mntmVerHabitaciones);
+		
 		JMenu mnReservas = new JMenu("Reservas");
 		menuBar.add(mnReservas);
+		
+		JMenuItem mntmAadirReserva = new JMenuItem("A\u00F1adir Reserva");
+		mnReservas.add(mntmAadirReserva);
+		
+		JMenuItem mntmConsultarReserva = new JMenuItem("Consultar Reserva");
+		mnReservas.add(mntmConsultarReserva);
 		
 		JMenu mnHuspedes = new JMenu("Hu\u00E9spedes");
 		menuBar.add(mnHuspedes);
@@ -93,7 +112,7 @@ public class Principal {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				System.out.println("Abrir frame de añadir");
-				Add frame = new Add();
+				AddGuest frame = new AddGuest();
 				frame.setVisible(true);
 			}
 		});
@@ -172,6 +191,9 @@ public class Principal {
 		textField.setBounds(206, 112, 86, 20);
 		frmHotelVarela.getContentPane().add(textField);
 		textField.setColumns(10);
+		
+		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.setBounds(336, 225, 89, 23);
+		frmHotelVarela.getContentPane().add(btnGuardar);
 	}
-
 }
