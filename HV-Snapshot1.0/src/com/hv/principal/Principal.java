@@ -9,6 +9,7 @@ import javax.swing.JMenuItem;
 
 import com.hv.utilidades.Utilidades;
 import com.hv.vistas.habitaciones.AddRooms;
+import com.hv.vistas.habitaciones.ReadRooms;
 import com.hv.vistas.huespedes.AddGuest;
 
 import java.awt.event.MouseAdapter;
@@ -85,7 +86,7 @@ public class Principal {
 		JMenu mnHabitaciones = new JMenu("Habitaciones");
 		menuBar.add(mnHabitaciones);
 		
-		JMenuItem mntmVerHabitaciones = new JMenuItem("Ver Habitaciones");
+		JMenuItem mntmVerHabitaciones = new JMenuItem("Agregar Habitaci\u00F3n");
 		mntmVerHabitaciones.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
@@ -94,6 +95,16 @@ public class Principal {
 			}
 		});
 		mnHabitaciones.add(mntmVerHabitaciones);
+		
+		JMenuItem mntmVerHabitaciones_1 = new JMenuItem("Ver Habitaciones");
+		mntmVerHabitaciones_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				ReadRooms ReadRoomsFrame = new ReadRooms();
+				ReadRoomsFrame.setVisible(true);
+			}
+		});
+		mnHabitaciones.add(mntmVerHabitaciones_1);
 		
 		JMenu mnReservas = new JMenu("Reservas");
 		menuBar.add(mnReservas);
