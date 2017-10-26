@@ -1,0 +1,11 @@
+Hospedados en la Habitación: 09
+Nombres: MARLLURY
+Apellidos: ROMERO
+País: Venezolana
+Documento: /CEDULA/
+Numero de Documento: 18090383
+Edad: 29
+Noches: 
+Moneda de pago: ARS
+Total a pagar: 9000
+Observaciones: Permanente. Entrada al pais 05/07/2017
