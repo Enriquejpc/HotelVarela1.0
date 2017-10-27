@@ -11,6 +11,7 @@ import com.hv.utilidades.Utilidades;
 import com.hv.vistas.habitaciones.AddRooms;
 import com.hv.vistas.habitaciones.ReadRooms;
 import com.hv.vistas.huespedes.AddGuest;
+import com.hv.vistas.huespedes.ReadGuest;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -31,6 +32,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.awt.Color;
 
 public class Principal {
 
@@ -74,8 +76,9 @@ public class Principal {
 	 */
 	private void initialize() {
 		frmHotelVarela = new JFrame();
+		frmHotelVarela.getContentPane().setForeground(Color.WHITE);
 		frmHotelVarela.setTitle("Hotel Varela");
-		frmHotelVarela.setBounds(100, 100, 568, 415);
+		frmHotelVarela.setBounds(400, 150, 568, 415);
 		frmHotelVarela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JMenuBar menuBar = new JMenuBar();
@@ -132,12 +135,22 @@ public class Principal {
 		mntmAadir.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				System.out.println("Abrir frame de añadir");
+				
 				AddGuest frame = new AddGuest();
 				frame.setVisible(true);
 			}
 		});
 		mnHuspedes.add(mntmAadir);
+		
+		JMenuItem mntmBuscar = new JMenuItem("Buscar");
+		mntmBuscar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				ReadGuest frame = new ReadGuest();
+				frame.setVisible(true);
+			}
+		});
+		mnHuspedes.add(mntmBuscar);
 
 		JMenu mnCuentas = new JMenu("Cuentas");
 		menuBar.add(mnCuentas);

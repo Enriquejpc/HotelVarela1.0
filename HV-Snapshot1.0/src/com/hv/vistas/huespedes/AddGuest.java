@@ -29,7 +29,11 @@ import java.awt.event.MouseEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
+import com.hv.modelo.HuespedesModel;
+import com.hv.utilidades.Utilidades;
+
 import java.io.*;
+import java.util.ArrayList;
 public class AddGuest extends JFrame {
 
 	private JPanel contentPane;
@@ -37,7 +41,7 @@ public class AddGuest extends JFrame {
 	private JTextField txtEdad;
 	private JTextField txtHab;
 	private JTextField txtNb;
-	private JTextField txtAp;
+	private JTextField txtCont;
 	private int limite  = 2;
 	private JTextField textOrigen;
 	private JTextField txtNoches;
@@ -48,6 +52,8 @@ public class AddGuest extends JFrame {
 	String moneda = "";
 	String observaciones = ""; 
 	boolean exito = false;
+	HuespedesModel huesped;
+	ArrayList<HuespedesModel> aList = new ArrayList<HuespedesModel>();
 	/**
 	 * Launch the application.
 	 */
@@ -69,7 +75,7 @@ public class AddGuest extends JFrame {
 	 */
 	public AddGuest() {
 		setTitle("Registrar Huesped");
-		setBounds(120, 150, 525, 341);
+		setBounds(420, 155, 525, 341);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -80,24 +86,24 @@ public class AddGuest extends JFrame {
 		lblNombre.setBounds(10, 11, 65, 14);
 		contentPane.add(lblNombre);
 		
-		JLabel lblApellidos = new JLabel("Apellido(s):");
-		lblApellidos.setBounds(10, 44, 65, 14);
+		JLabel lblApellidos = new JLabel("Contacto:");
+		lblApellidos.setBounds(10, 244, 65, 14);
 		contentPane.add(lblApellidos);
 		
 		JLabel lblTipoDeDocumento = new JLabel("Documento(s): ");
-		lblTipoDeDocumento.setBounds(10, 104, 102, 14);
+		lblTipoDeDocumento.setBounds(10, 73, 102, 14);
 		contentPane.add(lblTipoDeDocumento);
 		
 		JLabel lblNroDocumentos = new JLabel("Nro. Documento(s):");
-		lblNroDocumentos.setBounds(10, 140, 116, 14);
+		lblNroDocumentos.setBounds(10, 109, 116, 14);
 		contentPane.add(lblNroDocumentos);
 		
 		JLabel lblEdades = new JLabel("Edad(es):");
-		lblEdades.setBounds(10, 170, 57, 14);
+		lblEdades.setBounds(10, 139, 57, 14);
 		contentPane.add(lblEdades);
 		
 		JLabel lblObservaciones = new JLabel("Observaciones:");
-		lblObservaciones.setBounds(10, 207, 102, 14);
+		lblObservaciones.setBounds(10, 176, 102, 14);
 		contentPane.add(lblObservaciones);
 		
 		final JTextArea txtObservaciones = new JTextArea();
@@ -105,11 +111,11 @@ public class AddGuest extends JFrame {
 		txtObservaciones.setBackground(new Color(211, 211, 211));
 		txtObservaciones.setLineWrap(true);
 		txtObservaciones.setText("Indicar");
-		txtObservaciones.setBounds(122, 202, 234, 57);
+		txtObservaciones.setBounds(122, 171, 234, 57);
 		contentPane.add(txtObservaciones);
 		
 		txtDocs = new JTextField();
-		txtDocs.setBounds(122, 137, 234, 20);
+		txtDocs.setBounds(122, 106, 234, 20);
 		contentPane.add(txtDocs);
 		txtDocs.setColumns(10);
 		
@@ -124,7 +130,7 @@ public class AddGuest extends JFrame {
 			}
 		});
 		chckbxDni.setBackground(Color.WHITE);
-		chckbxDni.setBounds(121, 100, 50, 23);
+		chckbxDni.setBounds(121, 69, 50, 23);
 		contentPane.add(chckbxDni);
 		
 		final JCheckBox chckbxCedula = new JCheckBox("CEDULA");
@@ -139,7 +145,7 @@ public class AddGuest extends JFrame {
 			}
 		);
 		chckbxCedula.setBackground(Color.WHITE);
-		chckbxCedula.setBounds(173, 100, 85, 23);
+		chckbxCedula.setBounds(173, 69, 85, 23);
 		contentPane.add(chckbxCedula);
 		
 		final JCheckBox chckbxPasaporte = new JCheckBox("PASAPORTE");
@@ -154,7 +160,7 @@ public class AddGuest extends JFrame {
 			
 		});
 		chckbxPasaporte.setBackground(Color.WHITE);
-		chckbxPasaporte.setBounds(260, 100, 116, 23);
+		chckbxPasaporte.setBounds(260, 69, 102, 23);
 		contentPane.add(chckbxPasaporte);
 		
 		txtEdad = new JTextField();
@@ -172,7 +178,7 @@ public class AddGuest extends JFrame {
 				}
 			}
 		});
-		txtEdad.setBounds(122, 167, 234, 20);
+		txtEdad.setBounds(122, 136, 234, 20);
 		contentPane.add(txtEdad);
 		txtEdad.setColumns(10);
 		
@@ -203,17 +209,17 @@ public class AddGuest extends JFrame {
 		contentPane.add(txtNb);
 		txtNb.setColumns(10);
 		
-		txtAp = new JTextField();
-		txtAp.setBounds(122, 41, 234, 20);
-		contentPane.add(txtAp);
-		txtAp.setColumns(10);
+		txtCont = new JTextField();
+		txtCont.setBounds(122, 241, 234, 20);
+		contentPane.add(txtCont);
+		txtCont.setColumns(10);
 		
 		JLabel lblNacionalidad = new JLabel("Nacionalidad(es):");
-		lblNacionalidad.setBounds(10, 75, 102, 14);
+		lblNacionalidad.setBounds(10, 44, 102, 14);
 		contentPane.add(lblNacionalidad);
 		
 		textOrigen = new JTextField();
-		textOrigen.setBounds(122, 73, 234, 20);
+		textOrigen.setBounds(122, 42, 234, 20);
 		contentPane.add(textOrigen);
 		textOrigen.setColumns(10);
 		
@@ -247,7 +253,7 @@ public class AddGuest extends JFrame {
 		MontoTotal.setColumns(10);
 		
 		JLabel lblMoneda = new JLabel("Moneda");
-		lblMoneda.setBounds(366, 79, 46, 14);
+		lblMoneda.setBounds(366, 73, 46, 14);
 		contentPane.add(lblMoneda);
 		
 		final JComboBox MoncomboBox = new JComboBox();
@@ -297,7 +303,7 @@ public class AddGuest extends JFrame {
 				if(exito){
 					MostrarAlerta(exito);
 					txtNb.setText("");
-					txtAp.setText("");
+					txtCont.setText("");
 					textOrigen.setText("");
 					chckbxDni.setSelected(false);
 					chckbxCedula.setSelected(false);
@@ -310,7 +316,7 @@ public class AddGuest extends JFrame {
 				}else{
 					MostrarAlerta(exito);					
 					txtNb.setText("");
-					txtAp.setText("");
+					txtCont.setText("");
 					textOrigen.setText("");
 					chckbxDni.setSelected(false);
 					chckbxCedula.setSelected(false);
@@ -339,8 +345,11 @@ public class AddGuest extends JFrame {
 	
 	public boolean RegistrarHuesped(){
 		FileWriter fichero = null;
+		FileWriter ficheroListado = null;
         PrintWriter pw = null;
+        PrintWriter pwListado = null;
         boolean retorno = false;
+        String linea = "";
         try
         {
         	String habitacion = txtHab.getText();
@@ -351,15 +360,24 @@ public class AddGuest extends JFrame {
         	   pw = new PrintWriter(fichero);
 	           pw.println("Hospedados en la Habitación: "+habitacion);
 	           pw.println("Nombres: "+(txtNb.getText()).toUpperCase());
-	           pw.println("Apellidos: "+(txtAp.getText()).toUpperCase());
 	           pw.println("País: "+textOrigen.getText());
 	           pw.println("Documento: "+dni + "/"+cedula+"/"+pasaporte);
 	           pw.println("Numero de Documento: "+txtDocs.getText());
 	           pw.println("Edad: "+txtEdad.getText());
+	           pw.println("Fecha de Ingreso: "+new Utilidades().getFchActual());
 	           pw.println("Noches: "+txtNoches.getText());
 	           pw.println("Moneda de pago: "+moneda);
 	           pw.println("Total a pagar: "+MontoTotal.getText());
+	           pw.println("Contacto: "+(txtCont.getText()).toUpperCase());
 	           pw.print("Observaciones: "+observaciones);
+	           /*Escribo los datos en un archivo general que me servira para generar un listado de los huespedes**/
+	           ficheroListado = new FileWriter("Archivos\\ListadoHuespedes.txt");
+	           huesped = new HuespedesModel( habitacion,(txtNb.getText()).toUpperCase(),new Utilidades().getFchActual(),txtNoches.getText());
+	           aList.add(huesped);	           
+	           linea = habitacion+","+(txtNb.getText()).toUpperCase()+","+new Utilidades().getFchActual()+","+txtNoches.getText();
+	           pwListado = new PrintWriter(ficheroListado);
+	           pwListado.println(linea);
+	           /*Fin**/
         	retorno = true;
         	}else{
         		retorno = false;
@@ -372,6 +390,7 @@ public class AddGuest extends JFrame {
            // asegurarnos que se cierra el fichero.
            if (null != fichero)
               fichero.close();
+           	  ficheroListado.close();
            } catch (Exception e2) {
               e2.printStackTrace();
            }
